@@ -14,11 +14,17 @@
 int main(int argc, char * argv[]){
 
 	//Variáveis
-	char *ifile = NULL;
-	FILE* fp;
+	const struct option longopts[] = {
+	    {"inserir",        required_argument,        0, 'i'}, 
+    	{"remover",        required_argument,        0, 'r'},
+    	{"lista_insercao", required_argument,        0, 'l'},
+    	{"la",             no_argument,              0, 'a'}, 
+    	{"lt",             no_argument,              0, 't'},
+    	{0,0,0,0},
+	};
 	bool iflag = false;
 	bool rflag = false;
-	bool liflag = false;
+	bool lflag = false;
 	bool laflag = false;
 	bool ltflag = false;
 	int index;
@@ -26,24 +32,43 @@ int main(int argc, char * argv[]){
 	char* next;
 	opterr = 0;
 	//Fim variáveis	
-	const struct option longopts[] = {
-	    {"Inserir novo arquivo na base de buscas",                        required_argument,        0, 'i'},
-    	{"Remove arquivo da base de buscas",                              required_argument,        0, 'r'},
-    	{"Lista arquivos em ordem de inserção",                           required_argument,        0, 'l'},
-    	{"Lista arquivos em ordem alfabética",                            no_argument,  0, 'a'},
-    	{"Lista todos os arquivos em ordem descrescente de tamanho",      no_argument,  0, 't'},
-    	{0,0,0,0},
-	};
+
 
 	while (iarg != -1){
-		iarg = getopt_long(argc, argv, "i:", longopts, &index);
+		iarg = getopt_long_only(argc, argv, "i:r:l:ath", longopts, &index);
 		switch(iarg){
 			case 'i':
+				if (iflag){
+					std::cout << "Flag repetida" << std::endl;
+					return 0;
+				}
+				iflag = true;
 				std::cout << "ENTROU I " << std::endl;
 				std::cout << "Opcao Testar" << std::endl;
 				std::cout << optarg << std::endl;
-				fp = fopen(optarg,"w");
-				OpenFile(fp);
+				OpenFile(&optarg);
+				break;
+			case 'r':
+				std::cout << "ENtrou R" << std::endl;
+				rflag = true;
+				break;
+			case 'l':
+				std::cout << "ENtrou em L" << std::endl;
+				lflag = true;
+				break;
+			case 'a':
+				std::cout << "Entrou em la" << std::endl;
+				laflag = true;
+				break;
+			case 't':
+				std::cout << "Entrou em lt" << std::endl;
+				ltflag = true;
+				break;
+			case 'h':
+				std::cout << "Entrou em H" << std::endl;
+				break;
+			case '?':
+				std::cout << "entrou em ?" << std::endl;
 				break;
 		}
 	}
