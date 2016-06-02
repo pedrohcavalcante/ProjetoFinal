@@ -3,4 +3,4 @@
 #include <fstream>
 #include <sstream>
 
-void OpenFile(FILE* fileName);
+void OpenFile(char** fileName);
