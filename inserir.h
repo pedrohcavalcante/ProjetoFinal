@@ -9,7 +9,7 @@
 
 
 void OpenFile(char** fileName);
-void printFile();
+
 
 
 
