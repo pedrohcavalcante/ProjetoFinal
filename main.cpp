@@ -35,7 +35,7 @@ int main(int argc, char * argv[]){
 
 
 	while (iarg != -1){
-		iarg = getopt_long_only(argc, argv, "i:r:l:ath", longopts, &index);
+		iarg = getopt_long_only(argc, argv, "i:r:l:at", longopts, &index);
 		switch(iarg){
 			case 'i':
 				if (iflag){
@@ -59,13 +59,11 @@ int main(int argc, char * argv[]){
 			case 'a':
 				std::cout << "Entrou em la" << std::endl;
 				laflag = true;
+				printFile();
 				break;
 			case 't':
 				std::cout << "Entrou em lt" << std::endl;
 				ltflag = true;
-				break;
-			case 'h':
-				std::cout << "Entrou em H" << std::endl;
 				break;
 			case '?':
 				std::cout << "entrou em ?" << std::endl;
