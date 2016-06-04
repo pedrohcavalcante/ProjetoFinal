@@ -52,24 +52,44 @@ int main(int argc, char * argv[]){
 				break;
 			case 'r':
 				std::cout << "ENtrou R" << std::endl;
+				if (rflag){
+					std::cout << "Flag repetida" << std::endl;
+					return 0.;
+				}
 				rflag = true;
 				break;
 			case 'l':
 				std::cout << "ENtrou em L" << std::endl;
+				if (lflag){
+					std::cout << "Flag repetida" << std::endl;
+					return 0.;
+				}
 				lflag = true;
 				break;
 			case 'o':
 				std::cout << "Entrou em LI" << std::endl;
+				if (liflag){
+					std::cout << "Flag repetida" << std::endl;
+					return 0.;
+				}
 				liflag = true;
 				printFile();
 				break;
 			case 'a':
 				std::cout << "Entrou em la" << std::endl;
+				if (laflag){
+					std::cout << "Flag repetida" << std::endl;
+					return 0.;
+				}
 				laflag = true;
 				
 				break;
 			case 't':
 				std::cout << "Entrou em lt" << std::endl;
+				if (ltflag){
+					std::cout << "Flag repetida" << std::endl;
+					return 0.;
+				}
 				ltflag = true;
 				break;
 			case '?':
