@@ -1,0 +1,4 @@
+teste1.cpp 10
+teste1.cpp 10
+teste2.cpp 10
+libertadores.cpp 16
