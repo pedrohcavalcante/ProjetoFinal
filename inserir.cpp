@@ -13,9 +13,7 @@ void OpenFile(char** fileName){
 	if (!base_busca.is_open()){
 		std::cout << "Não foi possível abrir o arquivo" << std::endl;
 		//return 0;
-	}else{
-		std::cout << "rolou" << std::endl;
 	}
-	base_busca << *fileName << "\n";
+	base_busca << *fileName << ' ' << std::char_traits<char>::length(*fileName) << endl;
 	base_busca.close();
 }
