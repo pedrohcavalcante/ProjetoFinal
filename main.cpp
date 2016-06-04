@@ -59,7 +59,7 @@ int main(int argc, char * argv[]){
 				rflag = true;
 				break;
 			case 'l':
-				std::cout << "ENtrou em L" << std::endl;
+				std::cout << "Entrou em L" << std::endl;
 				if (lflag){
 					std::cout << "Flag repetida" << std::endl;
 					return 0.;
