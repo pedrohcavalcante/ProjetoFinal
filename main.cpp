@@ -82,7 +82,7 @@ int main(int argc, char * argv[]){
 					return 0.;
 				}
 				laflag = true;
-				
+				printFileCresc();
 				break;
 			case 't':
 				std::cout << "Entrou em lt" << std::endl;

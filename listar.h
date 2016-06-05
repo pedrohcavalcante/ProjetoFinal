@@ -9,5 +9,7 @@
 #include "inserir.h"
 
 void printFile();
+void printFileCresc();
+
 
 #endif
