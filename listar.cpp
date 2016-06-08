@@ -2,7 +2,11 @@
 #include <cstdlib>
 #include <fstream>
 #include <sstream>
+#include <stdio.h>
+#include <string.h>
 #include "listar.h"
+
+
 using namespace std;
 
 void printFile(){
@@ -10,7 +14,6 @@ void printFile(){
 	std::istringstream iss;
 	std::ifstream base_busca;
 	std::string namefile;
-
 	// ================ FIM ================
 	// ================ VARIAVEIS ================
 	// ================ FIM ================
@@ -33,7 +36,9 @@ void printFileCresc(){
 	std::string linha;
 	// ================ FIM ================
 	// VARIÁVEIS
-	file_names arquivo_teste;
+	int tamanho  = contaLinha();
+	//std::cout << tamanho << std::endl;
+	Fila* arq_fila = criarFila(tamanho);
 	// FIM
 	base_busca.open("base_busca.txt", std::ofstream::app);
 	if(!base_busca.is_open()){
@@ -41,14 +46,23 @@ void printFileCresc(){
 	}
 	//ESBOÇO DE COMO PEGAR NO ARQUIVO O NOME E O TAMANHO ;
 	//FALTA CRIAR LISTA ENCADEADA PARA ARMAZENAR TODOS OS NOMES;
-	while (!base_busca.eof()){
-		std::getline(base_busca, linha);
-		if (base_busca.eof()){
-			iss.str(linha);
-			iss >> arquivo_teste.nome >> arquivo_teste.tamanho;
-		}
-		std::cout << arquivo_teste.nome << arquivo_teste.tamanho << std::endl;
-	}
+
 	//Ordernar arquivo pela ordem do tamanho e depois imprimir 
 	//só então pode testar
+}
+
+int contaLinha(){
+	FILE *arq;
+	char ch;
+	int linhas = 0;;
+	arq=fopen("base_busca.txt", "r");
+	while( (ch=fgetc(arq))!= EOF ){
+
+		if (ch == '\n'){
+			linhas++;
+		}
+	}
+	//std::cout << "linhas: " << linhas << std::endl;
+	fclose(arq);
+	return linhas;
 }
