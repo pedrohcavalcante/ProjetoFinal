@@ -49,6 +49,15 @@ int main(int argc, char * argv[]){
 				std::cout << "Opcao Testar" << std::endl;
 				std::cout << optarg << std::endl;
 				OpenFile(&optarg);
+				index = optind;
+				if (argv[index] != NULL && argv[index][0]!='-'){
+					while(index < argc && argv[index][0]!='-'){
+						//std::cout << "Excesso: " << argv[index] << std::endl;
+						OpenFile(&argv[index]);
+						index++;
+					}
+					optind = index-1;
+				}
 				break;
 			case 'r':
 				std::cout << "ENtrou R" << std::endl;
@@ -91,6 +100,7 @@ int main(int argc, char * argv[]){
 					return 0.;
 				}
 				ltflag = true;
+				//std::cout << contaLinha() << std::endl;
 				break;
 			case '?':
 				std::cout << "entrou em ?" << std::endl;
