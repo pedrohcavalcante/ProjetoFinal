@@ -15,5 +15,6 @@ void OpenFile(char** fileName){
 		//return 0;
 	}
 	base_busca << *fileName << ' ' << std::char_traits<char>::length(*fileName) << endl;
+	std::cout << ">> Arquivo '" << *fileName << "' inserido na base de buscas" << std::endl;
 	base_busca.close();
 }
