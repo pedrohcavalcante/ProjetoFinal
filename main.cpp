@@ -45,8 +45,8 @@ int main(int argc, char * argv[]){
 					return 0;
 				}
 				iflag = true;
-				std::cout << "ENTROU I " << std::endl;
-				std::cout << "Opcao Testar" << std::endl;
+				//std::cout << "ENTROU I " << std::endl;
+				//std::cout << "Opcao Testar" << std::endl;
 				std::cout << optarg << std::endl;
 				OpenFile(&optarg);
 				index = optind;
@@ -60,15 +60,16 @@ int main(int argc, char * argv[]){
 				}
 				break;
 			case 'r':
-				std::cout << "ENtrou R" << std::endl;
+				//std::cout << "ENtrou R" << std::endl;
 				if (rflag){
 					std::cout << "Flag repetida" << std::endl;
 					return 0.;
 				}
 				rflag = true;
+				remover_file(&optarg);
 				break;
 			case 'l':
-				std::cout << "Entrou em L" << std::endl;
+				//std::cout << "Entrou em L" << std::endl;
 				if (lflag){
 					std::cout << "Flag repetida" << std::endl;
 					return 0.;
@@ -76,7 +77,7 @@ int main(int argc, char * argv[]){
 				lflag = true;
 				break;
 			case 'o':
-				std::cout << "Entrou em LI" << std::endl;
+				//std::cout << "Entrou em LI" << std::endl;
 				if (liflag){
 					std::cout << "Flag repetida" << std::endl;
 					return 0.;
@@ -85,7 +86,7 @@ int main(int argc, char * argv[]){
 				printFile();
 				break;
 			case 'a':
-				std::cout << "Entrou em la" << std::endl;
+				//std::cout << "Entrou em la" << std::endl;
 				if (laflag){
 					std::cout << "Flag repetida" << std::endl;
 					return 0.;
@@ -94,7 +95,7 @@ int main(int argc, char * argv[]){
 				printFileCresc();
 				break;
 			case 't':
-				std::cout << "Entrou em lt" << std::endl;
+				//std::cout << "Entrou em lt" << std::endl;
 				if (ltflag){
 					std::cout << "Flag repetida" << std::endl;
 					return 0.;
