@@ -31,7 +31,7 @@ int main(int argc, char * argv[]){
 	bool ltflag = false;
 	int index;
 	int iarg = 0;
-	char* next;
+	//char* next;
 	opterr = 0;
 	//Fim variáveis	
 

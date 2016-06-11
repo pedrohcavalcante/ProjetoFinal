@@ -20,10 +20,12 @@ void printFile(){
 	base_busca.open("base_busca.txt", std::ofstream::app);
 	if (!base_busca.is_open()){
 		std::cout << "Errado ao abrir" << std::endl;
-	}
-	while(!base_busca.eof()){
-		std::getline(base_busca, namefile);
-		std::cout << namefile << std::endl;
+	}else{
+		std::cout << ">> Arquivos contidos na base de buscas: " << std::endl;
+		while(!base_busca.eof()){
+			std::getline(base_busca, namefile);
+			std::cout << "- '" <<  namefile << "'" <<  std::endl;
+		}
 	}
 	base_busca.close();
 }
@@ -31,14 +33,14 @@ void printFile(){
 void printFileCresc(){
 	// ================ DIRETIVAS DE ARQUIVO ================
 	std::istringstream iss;
-	std::ifstream base_busca;
+	std::fstream base_busca;
 	std::string namefile;
 	std::string linha;
 	// ================ FIM ================
 	// VARIÁVEIS
-	int tamanho  = contaLinha();
+	//int tamanho  = contaLinha();
 	//std::cout << tamanho << std::endl;
-	Fila* arq_fila = criarFila(tamanho);
+	//Fila* arq_fila = criarFila(tamanho);
 	// FIM
 	base_busca.open("base_busca.txt", std::ofstream::app);
 	if(!base_busca.is_open()){
