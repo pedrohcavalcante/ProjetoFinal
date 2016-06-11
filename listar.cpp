@@ -5,26 +5,33 @@
 #include <stdio.h>
 #include <string.h>
 #include "listar.h"
-
+using namespace std;
+bool operator== (const string& lhs, const string& rhs) noexcept;
+bool operator== (const char*   lhs, const string& rhs);
+bool operator== (const string& lhs, const char*   rhs);
 
 using namespace std;
 
 void printFile(){
 	// ================ DIRETIVAS DE ARQUIVO ================
 	std::istringstream iss;
-	std::ifstream base_busca;
+	std::fstream base_busca;
 	std::string namefile;
 	// ================ FIM ================
 	// ================ VARIAVEIS ================
 	// ================ FIM ================
-	base_busca.open("base_busca.txt", std::ofstream::app);
+	base_busca.open("base_busca.txt");
 	if (!base_busca.is_open()){
 		std::cout << "Errado ao abrir" << std::endl;
 	}else{
 		std::cout << ">> Arquivos contidos na base de buscas: " << std::endl;
 		while(!base_busca.eof()){
 			std::getline(base_busca, namefile);
-			std::cout << "- '" <<  namefile << "'" <<  std::endl;
+			//if (strcmp(namefile, "") == 0){
+			//if (namefile == ""){
+			if (namefile.compare("")){
+				std::cout << "- '" <<  namefile << "'" <<  std::endl;
+			}
 		}
 	}
 	base_busca.close();
