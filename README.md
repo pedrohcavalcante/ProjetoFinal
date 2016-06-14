@@ -15,3 +15,9 @@ gerenciamento   da   base   de   buscas   e   (ii)   modo   de   buscas.
 
 LUCAS SANTOS FONSECA - 2014052725
 PEDRO HENRIQUE BEZERRA CAVALCANTE - 2014028473
+
+# Compilação
+
+O projeto deve ser compilado com a seguinte linha de comando:
+
+g++ -Wall main.cpp. PreProcessing.cpp inserir.cpp listar.cpp -std=c++11 -o <nome_exec>
