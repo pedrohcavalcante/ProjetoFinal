@@ -3,12 +3,11 @@
 #include <fstream>
 #include <sstream>
 #include <stdio.h>
+#include <algorithm> 
+#include <vector>
 #include <string.h>
 #include "listar.h"
-using namespace std;
-bool operator== (const string& lhs, const string& rhs) noexcept;
-bool operator== (const char*   lhs, const string& rhs);
-bool operator== (const string& lhs, const char*   rhs);
+#include "PreProcessing.h"
 
 using namespace std;
 
@@ -27,8 +26,7 @@ void printFile(){
 		std::cout << ">> Arquivos contidos na base de buscas: " << std::endl;
 		while(!base_busca.eof()){
 			std::getline(base_busca, namefile);
-			//if (strcmp(namefile, "") == 0){
-			//if (namefile == ""){
+			//file_names.push_back(namefile);
 			if (namefile.compare("")){
 				std::cout << "- '" <<  namefile << "'" <<  std::endl;
 			}
@@ -37,41 +35,63 @@ void printFile(){
 	base_busca.close();
 }
 
-void printFileCresc(){
-	// ================ DIRETIVAS DE ARQUIVO ================
-	std::istringstream iss;
-	std::fstream base_busca;
-	std::string namefile;
-	std::string linha;
-	// ================ FIM ================
-	// VARIÁVEIS
-	//int tamanho  = contaLinha();
-	//std::cout << tamanho << std::endl;
-	//Fila* arq_fila = criarFila(tamanho);
-	// FIM
-	base_busca.open("base_busca.txt", std::ofstream::app);
-	if(!base_busca.is_open()){
-		std::cout << "Erro ao abrir arquivo" << std::endl;
-	}
-	//ESBOÇO DE COMO PEGAR NO ARQUIVO O NOME E O TAMANHO ;
-	//FALTA CRIAR LISTA ENCADEADA PARA ARMAZENAR TODOS OS NOMES;
+void printAlf(DOCS** lista){
+	openDocFile(lista);
+	DOCS* aux = *lista;
+	DOCS* anterior = NULL;
+	
+	int i = 0;
+	
+	std::string strAux[10];
+	
+	while(aux != NULL){
+		
+		strAux[i] = aux->NameDoc;	
+		
+		//std::cout << strAux[i] << std::endl;
 
-	//Ordernar arquivo pela ordem do tamanho e depois imprimir 
-	//só então pode testar
+		i++;
+
+		aux = aux->prox;
+		
+	}
+
+	QuickSort (strAux, 0, i);
+	int j = 0;
+	while ( j < i+1 ){
+		std::cout << strAux[j] << std::endl;
+		j++;
+	}
 }
 
-int contaLinha(){
-	FILE *arq;
-	char ch;
-	int linhas = 0;;
-	arq=fopen("base_busca.txt", "r");
-	while( (ch=fgetc(arq))!= EOF ){
 
-		if (ch == '\n'){
-			linhas++;
+void QuickSort( std::string v[], int left, int right){
+	int pivo = ( right + left)/2;
+	int i = left, j = right;
+	std::string temp;
+
+	while ( i <= j){
+		if ( v[i] < v[pivo] ){
+			i++;
 		}
+		else if ( v[j] > v[pivo] ){
+			j--;
+		}
+		else if (i <= j){
+			temp = v[i];
+			v[i] = v[j];
+			v[j] = temp;
+			i++;
+			j--;
+		}
+
 	}
-	//std::cout << "linhas: " << linhas << std::endl;
-	fclose(arq);
-	return linhas;
+
+	if (left < j){
+		QuickSort( v, left, j );
+	}
+
+	if (right > i){
+		QuickSort( v, i, right );
+	}
 }
